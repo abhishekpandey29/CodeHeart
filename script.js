@@ -84,15 +84,9 @@ function startDecryption() {
                 lockScreen.classList.add('opacity-0');
                 setTimeout(() => {
                     lockScreen.classList.add('hidden');
-                    document.getElementById('romantic').classList.remove('hidden');
+                    revealRomanticSection();
                     // Attach quiz button event listener after reveal
-                    const quizBtn = document.getElementById('start-quiz');
-                    if (quizBtn) {
-                        quizBtn.onclick = function(e) {
-                            e.preventDefault();
-                            startQuiz();
-                        };
-                    }
+                    attachQuizListeners();
                 }, 2000); // 2 second fade
             }, 500); // Small delay before fade
         }
@@ -210,9 +204,40 @@ function showResult() {
     document.getElementById('restart-quiz').addEventListener('click', startQuiz);
 }
 
-// Attach restart quiz button listener using event delegation
+// Attach quiz button listeners robustly
+function attachQuizListeners() {
+    const quizBtn = document.getElementById('start-quiz');
+    if (quizBtn) {
+        quizBtn.onclick = function(e) {
+            e.preventDefault();
+            startQuiz();
+        };
+    }
+    const restartBtn = document.getElementById('restart-quiz');
+    if (restartBtn) {
+        restartBtn.onclick = function(e) {
+            e.preventDefault();
+            startQuiz();
+        };
+    }
+}
+
+// Attach on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachQuizListeners);
+} else {
+    attachQuizListeners();
+}
+
+// Attach after romantic section is revealed
+function revealRomanticSection() {
+    document.getElementById('romantic').classList.remove('hidden');
+    attachQuizListeners();
+}
+
+// Fallback: event delegation for any future quiz buttons
 document.addEventListener('click', function(event) {
-    if (event.target.id === 'restart-quiz') {
+    if (event.target.id === 'start-quiz' || event.target.id === 'restart-quiz') {
         event.preventDefault();
         startQuiz();
     }
