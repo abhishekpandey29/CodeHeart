@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHeart</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Fallback styles in case Tailwind CDN fails */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #111827, #7f1d1d);
+            color: #f472b6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+        #terminal {
+            background: rgba(127, 29, 29, 0.75);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            max-width: 32rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f472b6;
+        }
+        #romantic {
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #fce7f3, #fecaca);
+            font-family: 'Playfair Display', serif;
+        }
+        .hidden { display: none; }
+        button { cursor: pointer; }
+        #start-quiz { border: none; font-size: 1rem; }
+    </style>
+</head>
+<body class="font-mono">
+    <!-- Phase 1: Love Lock Screen -->
+    <div id="lock-screen" class="fixed inset-0 bg-gradient-to-br from-gray-900 to-red-900 text-pink-400 flex flex-col justify-center items-center z-50">
+        <div id="terminal" class="bg-red-900 bg-opacity-75 p-6 rounded-lg w-full max-w-lg shadow-lg border border-pink-500">
+            <div id="boot-sequence" class="mb-4"></div>
+            <form id="password-form" class="flex items-center">
+                <span class="text-pink-400 mr-2">♥</span>
+                <input type="password" id="password-input" placeholder="Enter Love Code..." class="bg-transparent border-none outline-none text-pink-400 flex-1" autocomplete="off">
+            </form>
+            <div id="error-message" class="text-red-300 mt-2 hidden"></div>
+        </div>
+        <!-- Progress bar will be added here dynamically -->
+    </div>
+
+    <!-- Phase 2: Romantic Reveal -->
+    <div id="romantic" class="hidden min-h-screen bg-gradient-to-br from-pink-200 to-red-200 font-serif">
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Access Granted: My Valentine.</h1>
+        </header>
+        <main class="container mx-auto px-4 pb-16">
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-xl mb-12">
+                <p class="text-xl text-gray-700 mb-4">Dear Bebu,</p>
+                <p class="text-lg leading-relaxed text-gray-600 mb-4">
+                    October 9, 2022 might just look like a random date on the calendar to anyone else, but for me, it is where our story began. That was the day a stranger on a screen became the most important person in my world.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-600 mb-4">
+                    For a long time, we had to love each other across the distance. We built a relationship on late-night calls, messages, and the promise that one day, the waiting would end. I fell in love with your voice, face and your mind long before I could ever hold your hand.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-600 mb-4">
+                    Then came December 23, 2023.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-600 mb-4">
+                    I will never forget that day. It was the day the distance finally broke. Seeing you in person for the first time wasn’t just a meeting; it was a relief. It was the moment I realized that you were real, that you were warm, and that you were even more beautiful than I had imagined.
+                </p>
+                <p class="text-lg leading-relaxed text-gray-600">
+                    Thank you for bring our from "URL" to "IRL". You are my best friend, my love and my greatest adventure.
+                </p>
+            </div>
+            <!-- Relationship Quiz -->
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">How Well Do You Know Me? 💕</h2>
+                <div id="quiz-container" class="text-center">
+                    <p class="text-lg text-gray-600 mb-4">Test your knowledge about our relationship!</p>
+                    <button type="button" id="start-quiz" class="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition-colors cursor-pointer" style="cursor: pointer;">Start Quiz</button>
+                </div>
+            </div>
+            <button id="play-music" class="fixed bottom-6 right-6 bg-pink-500 hover:bg-pink-600 text-white p-4 rounded-full shadow-lg transition-colors" title="Play Romantic Music">
+                ▶
+            </button>
+        </main>
+        <footer class="text-center py-6 text-gray-600 bg-white bg-opacity-50">
+            <p class="text-sm md:text-base">Encrypted with Love | 2026</p>
+        </footer>
+    </div>
+
+    <!-- Embedded YouTube video for "Tum Se Hi" by Mohit Chauhan -->
+    <iframe id="music-iframe" width="300" height="200" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:none; position:fixed; bottom:20px; left:20px; z-index:60;"></iframe>
+
+    <script src="script.js"></script>
+</body>
+</html>
