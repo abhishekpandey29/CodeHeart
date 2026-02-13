@@ -1,3 +1,27 @@
+// Nickname gate logic
+const nicknameGate = document.getElementById('nickname-gate');
+const nicknameForm = document.getElementById('nickname-form');
+const nicknameInput = document.getElementById('nickname-input');
+const nicknameError = document.getElementById('nickname-error');
+const terminalDiv = document.getElementById('terminal');
+
+if (nicknameForm) {
+    nicknameForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const answer = nicknameInput.value.trim().toLowerCase();
+        // Set your answer here (change as needed)
+        if (answer === 'bebu') {
+            nicknameGate.classList.add('hidden');
+            terminalDiv.classList.remove('hidden');
+            nicknameError.classList.add('hidden');
+        } else {
+            nicknameError.textContent = 'Incorrect! Try again.';
+            nicknameError.classList.remove('hidden');
+            nicknameInput.classList.add('shake');
+            setTimeout(() => nicknameInput.classList.remove('shake'), 500);
+        }
+    });
+}
 // Boot sequence lines
 const bootLines = [
     "Booting Love System...",

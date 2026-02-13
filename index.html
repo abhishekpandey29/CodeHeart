@@ -43,9 +43,17 @@
     </style>
 </head>
 <body class="font-mono">
-    <!-- Phase 1: Love Lock Screen -->
+    <!-- Phase 1: Love Lock Screen with Nickname Question -->
     <div id="lock-screen" class="fixed inset-0 bg-gradient-to-br from-gray-900 to-red-900 text-pink-400 flex flex-col justify-center items-center z-50">
-        <div id="terminal" class="bg-red-900 bg-opacity-75 p-6 rounded-lg w-full max-w-lg shadow-lg border border-pink-500">
+        <div id="nickname-gate" class="bg-red-900 bg-opacity-75 p-6 rounded-lg w-full max-w-lg shadow-lg border border-pink-500 flex flex-col items-center justify-center">
+            <div class="mb-4 text-lg">Question: <span class="font-bold">What is my nickname for you?</span></div>
+            <form id="nickname-form" class="flex items-center w-full max-w-xs">
+                <input type="text" id="nickname-input" placeholder="Enter your nickname..." class="bg-transparent border-b border-pink-400 outline-none text-pink-400 flex-1 px-2 py-1" autocomplete="off">
+                <button type="submit" class="ml-2 bg-pink-500 text-white px-4 py-1 rounded hover:bg-pink-600 transition-colors">Submit</button>
+            </form>
+            <div id="nickname-error" class="text-red-300 mt-2 hidden"></div>
+        </div>
+        <div id="terminal" class="bg-red-900 bg-opacity-75 p-6 rounded-lg w-full max-w-lg shadow-lg border border-pink-500 hidden">
             <div id="boot-sequence" class="mb-4"></div>
             <form id="password-form" class="flex items-center">
                 <span class="text-pink-400 mr-2">♥</span>
